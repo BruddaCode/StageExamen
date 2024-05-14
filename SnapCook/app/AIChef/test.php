@@ -2,18 +2,53 @@
 
 namespace SnapCook\App\AIChef;
 
-require_once '../../vendor/autoload.php';
-
 use Anthropic;
 
 class Test
 {
-    public $imagePath = '/home/fw/Downloads/71c6c0a85ff64f34cd2a5a196d6e317e.webp';
+    public $imagePath = '';
 
-    public function test()
+    public function test($imagePath)
     {
-        $imagePath = $this->imagePath;
+        $this->imagePath = $imagePath;
         $imageExtension = pathinfo($imagePath, PATHINFO_EXTENSION);
+
+        echo "Image Path: " . $imagePath . "\n";
+        echo "Image Extension: " . $imageExtension . "\n";
+
+        // convert image to PNG if it's not already
+        // Allowed image extensions
+        $allowedExtensions = ['gif', 'jpeg', 'png', 'webp'];
+
+        // Temporary file path for downloading the image
+        $tempImagePath = 'app/AIChef/temp_image.' . $imageExtension;
+
+        // Download the image from the URL
+        $imageData = file_get_contents($imagePath);
+        if ($imageData === false) {
+            die('Failed to download image.');
+        }
+
+        // Save the image to a temporary local file
+        file_put_contents($tempImagePath, $imageData);
+
+        // Check the image extension and convert if necessary
+        if (!in_array(strtolower($imageExtension), $allowedExtensions)) {
+            $image = imagecreatefromstring(file_get_contents($tempImagePath));
+            if ($image === false) {
+                die('Failed to create image from string.');
+            }
+            $newImagePath = 'app/AIChef/converted_image.png';
+            imagepng($image, $newImagePath);
+            imagedestroy($image);
+            $imagePath = $newImagePath;
+            $imageExtension = 'png';
+        } else {
+            $imagePath = $tempImagePath;
+        }
+
+        echo "New Image Path: " . $imagePath . "\n";
+        echo "New Image Extension: " . $imageExtension . "\n";
 
         $apiKey = env('ANTRHOPIC_API_KEY');
 
@@ -33,7 +68,23 @@ class Test
                     'content' => [
                         [
                             'type' => 'text',
-                            'text' => 'Tell me about this dish. What is it? How is it made? What are the ingredients? can you provide a recipe?'
+                            'text' =>  'Tell me about this dish. What is it? How is it made? What are the ingredients? can you provide a recipe?
+                                        can you put it in this format:
+                                            Description:
+                                                - description 1
+                                                - description 2
+                                                - description 3
+
+                                            to make this dish like this, here is a basic recipe:
+
+                                            Ingredients:
+                                                - ingredient 1
+                                                - ingredient 2
+                                                - ingredient 3
+                                            Instructions:
+                                                1. instruction 1
+                                                2. instruction 2
+                                                3. instruction 3'
                         ],
                         [
                             'type' => 'image',
@@ -92,20 +143,24 @@ class Test
             }
         }
 
+        // Clean up temporary files
+        unlink($tempImagePath);
+        if (isset($newImagePath) && file_exists($newImagePath)) {
+            unlink($newImagePath);
+        }
+
         // displaying the results
         // later we can return these values to the web page
-        print_r($description);
-        print_r($recipe);
-        print_r($ingredients);
-        print_r($instructions);
+        return [
+            'description' => $description,
+            'recipe' => $recipe,
+            'ingredients' => $ingredients,
+            'instructions' => $instructions
+        ];
     }
 }
 
-$test = new Test();
-$start = microtime(true);
-$test->test();
-echo "\nTime: " . (microtime(true) - $start) . "s\n";
-
-
-
-
+// $test = new Test();
+// $start = microtime(true);
+// $test->test();
+// echo "\nTime: " . (microtime(true) - $start) . "s\n";
