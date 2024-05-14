@@ -118,7 +118,9 @@ class Test
                 continue;
             }
 
-            if (str_contains($line, "Ingredients:")) {
+            if (str_contains($line, "Description:")) {
+                $section = 'description';
+            } elseif (str_contains($line, "Ingredients:")) {
                 $section = 'ingredients';
             } elseif (str_contains($line, "Instructions:")) {
                 $section = 'instructions';
