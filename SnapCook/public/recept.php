@@ -12,8 +12,8 @@
 <body>
 
 <?php include 'nav.php'; ?>
-
-<h1 class="text-4xl font-semibold text-center pt-16">Resultaat</h1>
+<!--Begin resultaat gedeelte-->
+<h1 class="text-4xl font-semibold text-center pt-16 pb-10">Resultaat</h1>
 
 <div class="flex items-center justify-center border-black pb-20">
     <div class="flex items-center justify-center w-9/12 border-top border-2 border-black pb-20 pt-20">
@@ -39,6 +39,10 @@
     </div>
 </div>
 
+<!--Eind resultaat gedeelte-->
+
+
+<!--Begin recept gedeelte-->
 <div class="pb-40 flex flex-col items-center justify-center h-[1000px]" style="background-color: #F3F2F2;">
     <h1 class="text-2xl font-semibold text-center pt-32 pb-10">Recepten nodig voor uw gewenst gerecht</h1>
 
@@ -49,33 +53,34 @@
                 <label for="default-checkbox" class="ms-2 text-2xl font-semibold">750 gram bloem</label>
             </div>
             <div class="flex items-center mb-2">
-                <input checked id="checked-checkbox1" type="checkbox" value="" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="checked-checkbox1" class="ms-2 text-2xl font-semibold">250 gram kaas</label>
+                <input id="default-checkbox1" type="checkbox" value="" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-checkbox1" class="ms-2 text-2xl font-semibold">250 gram kaas</label>
             </div>
             <div class="flex items-center mb-2">
-                <input checked id="checked-checkbox2" type="checkbox" value="" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="checked-checkbox2" class="ms-2 text-2xl font-semibold">250 gram tomatensaus</label>
+                <input id="default-checkbox2" type="checkbox" value="" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-checkbox2" class="ms-2 text-2xl font-semibold">250 gram tomatensaus</label>
             </div>
             <div class="flex items-center mb-2">
-                <input checked id="checked-checkbox3" type="checkbox" value="" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="checked-checkbox3" class="ms-2 text-2xl font-semibold">100 gram ananas</label>
+                <input id="default-checkbox3" type="checkbox" value="" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-checkbox3" class="ms-2 text-2xl font-semibold">100 gram ananas</label>
             </div>
             <div class="flex items-center mb-2">
-                <input checked id="checked-checkbox4" type="checkbox" value="" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="checked-checkbox4" class="ms-2 text-2xl font-semibold">100 gram kipfilet</label>
+                <input id="default-checkbox4" type="checkbox" value="" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-checkbox4" class="ms-2 text-2xl font-semibold">100 gram kipfilet</label>
             </div>
             <div class="flex items-center mb-2">
-                <input checked id="checked-checkbox5" type="checkbox" value="" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="checked-checkbox5" class="ms-2 text-2xl font-semibold">50 gram uien</label>
+                <input id="default-checkbox5" type="checkbox" value="" class="w-4 h-4 mr-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-checkbox5" class="ms-2 text-2xl font-semibold">50 gram uien</label>
             </div>
             <div class="flex items-center">
-                <input checked id="checked-checkbox6" type="checkbox" value="" class="w-4 h-4 mr-2 text-pink-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="checked-checkbox6" class="ms-2 text-2xl font-semibold">25 gram peterselie</label>
+                <input id="default-checkbox6" type="checkbox" value="" class="w-4 h-4 mr-2 text-pink-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-checkbox6" class="ms-2 text-2xl font-semibold">25 gram peterselie</label>
             </div>
         </div>
     </div>
 </div>
 
+<!--Eind recept gedeelte-->
 
 <?php include 'footer.php'; ?>
 
