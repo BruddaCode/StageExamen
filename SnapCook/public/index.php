@@ -32,11 +32,26 @@ require __DIR__.'/../vendor/autoload.php';
 <body>
 
 <?php include 'nav.php'; ?>
+<!--Begin header-->
+<header style="background-color: #F3F2F2;" >
+    <div class="flex items-center ml-20">
+        <div
+        <h1 class="text-6xl" >Plaats De Foto En </h1>
+        <h1 class="text-6xl">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Maak Het Zelf! </h1>
+    </div>
+    <img  class="ml-auto mr-20" height="553" width="730" src="img/indeximg.png">
+    </div>
 
-<p class="">test</p>
 
+    <div class="flex justify-center pt-20 pb-20">
+        <a href="scanner.php">
+            <button class=" bg-gray-700 hover:bg-gray-500 text-white text-3xl py-4 px-12 rounded-full">
+                Scan nu </button>
+            <a>
+    </div>
+</header>
 
-
+<!--Eind header-->
 <?php include 'footer.php'; ?>
 
 </body>

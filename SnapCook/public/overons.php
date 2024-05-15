@@ -49,8 +49,10 @@
                     <a class="text-green-700 font-semibold">Fabio Wolthuis | Back End Developer</a>
                 </div>
             </div>
-            <div class=" md:mt-0">
-                <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86" alt="About Us Image" class="object-cover rounded-lg shadow-md">
+            <div class="md:mt-0 flex justify-center items-center"> <!-- Modified to flex and centered -->
+                <div style="width: 300px; height: 300px; overflow: hidden; border-radius: 15px;">
+                    <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86" alt="About Us Image" class="object-cover" style="width: 100%; height: 100%;">
+                </div>
             </div>
         </div>
     </div>
@@ -70,12 +72,16 @@
                     <a class="text-green-700 font-semibold">Ravda Tukuc | Front End Developer</a>
                 </div>
             </div>
-            <div class=" md:mt-0">
-                <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86" alt="About Us Image" class="object-cover rounded-lg shadow-md">
+            <div class="md:mt-0 flex justify-center items-center"> <!-- Modified to flex and centered -->
+                <div style="width: 300px; height: 300px; overflow: hidden; border-radius: 15px;">
+                    <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86" alt="About Us Image" class="object-cover" style="width: 100%; height: 100%;">
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+
 
 <section class="">
     <div class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -91,14 +97,15 @@
                     <a class="text-green-700 font-semibold">Yasin Coban | Front End Developer</a>
                 </div>
             </div>
-            <div class=" md:mt-0">
-                <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86" alt="About Us Image" class="object-cover rounded-lg shadow-md">
+            <div class="md:mt-0 flex justify-center items-center"> <!-- Modified to flex and centered -->
+                <div style="width: 300px; height: 300px; overflow: hidden; border-radius: 15px;">
+                    <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86" alt="About Us Image" class="object-cover" style="width: 100%; height: 100%;">
+                </div>
             </div>
         </div>
     </div>
 </section>
 </div>
-
 
 
 
