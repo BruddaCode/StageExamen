@@ -11,7 +11,7 @@ class AIChef extends Command
      *
      * @var string
      */
-    protected $signature = 'app:a-i-chef';
+    protected $signature = 'app:ai-chef';
 
     /**
      * The console command description.

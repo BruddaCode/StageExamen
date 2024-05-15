@@ -10,5 +10,5 @@ Artisan::command('inspire', function () {
 
 
 Artisan::command('app:ai-chef {image}', function (AIChef $Chef, $image) {
-    return $Chef->GetRecipe($image);
+    $Chef->GetRecipe($image);
 })->purpose('A-I Chef command')->hourly();
