@@ -4,11 +4,11 @@ namespace SnapCook\App\AIChef;
 
 use Anthropic;
 
-class Test
+class AIChef
 {
     public $imagePath = '';
 
-    public function test($imagePath)
+    public function GetRecipe(string $imagePath)
     {
         $this->imagePath = $imagePath;
         $imageExtension = pathinfo($imagePath, PATHINFO_EXTENSION);
@@ -75,7 +75,7 @@ class Test
                                                 - description 2
                                                 - description 3
 
-                                            to make this dish like this, here is a basic recipe:
+                                            here is a basic recipe to make [dish name]:
 
                                             Ingredients:
                                                 - ingredient 1
@@ -161,8 +161,3 @@ class Test
         ];
     }
 }
-
-// $test = new Test();
-// $start = microtime(true);
-// $test->test();
-// echo "\nTime: " . (microtime(true) - $start) . "s\n";
