@@ -6,15 +6,16 @@ use Anthropic;
 
 class AIChef
 {
-    public $imagePath = '';
+    private $imagePath;
+    public $description;
+    public $recipe;
+    public $ingredients;
+    public $instructions;
 
     public function GetRecipe(string $imagePath)
     {
         $this->imagePath = $imagePath;
         $imageExtension = pathinfo($imagePath, PATHINFO_EXTENSION);
-
-        echo "Image Path: " . $imagePath . "\n";
-        echo "Image Extension: " . $imageExtension . "\n";
 
         // convert image to PNG if it's not already
         // Allowed image extensions
@@ -46,9 +47,6 @@ class AIChef
         } else {
             $imagePath = $tempImagePath;
         }
-
-        echo "New Image Path: " . $imagePath . "\n";
-        echo "New Image Extension: " . $imageExtension . "\n";
 
         $apiKey = env('ANTRHOPIC_API_KEY');
 
@@ -151,13 +149,10 @@ class AIChef
             unlink($newImagePath);
         }
 
-        // displaying the results
-        // later we can return these values to the web page
-        return [
-            'description' => $description,
-            'recipe' => $recipe,
-            'ingredients' => $ingredients,
-            'instructions' => $instructions
-        ];
+        // Return the recipe
+        $this->description = $description;
+        $this->recipe = $recipe;
+        $this->ingredients = $ingredients;
+        $this->instructions = $instructions;
     }
 }
