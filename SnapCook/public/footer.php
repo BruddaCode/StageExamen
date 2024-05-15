@@ -26,16 +26,16 @@
                   <h2 class="mb-8 text-lg font-semibold text-gray-900 uppercase dark:text-white">Handige Links</h2>
                   <ul class="text-gray-900  dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="https://flowbite.com/" class="hover:underline">Home</a>
+                          <a href="index.php" class="hover:underline">Home</a>
                       </li>
                       <li class="mb-4">
-                          <a href="https://tailwindcss.com/" class="hover:underline">Scanner</a>
+                          <a href="scanner.php" class="hover:underline">Scanner</a>
                       </li>
                       <li class="mb-4">
-                          <a href="https://tailwindcss.com/" class="hover:underline">Over Ons</a>
+                          <a href="overons.php" class="hover:underline">Over Ons</a>
                       </li>
                       <li class="mb-4">
-                          <a href="https://tailwindcss.com/" class="hover:underline">Contact</a>
+                          <a href="contact.php" class="hover:underline">Contact</a>
                       </li>
                   </ul>
               </div>
@@ -43,10 +43,10 @@
                   <h2 class="mb-8 text-lg font-semibold text-gray-900 uppercase dark:text-white">Juridisch</h2>
                   <ul class="text-gray-900  dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Privacy Beleid</a>
+                          <a href="privacy.php" class="hover:underline ">Privacy Beleid</a>
                       </li>
                       <li>
-                          <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Contact</a>
+                          <a href="contact.php" class="hover:underline">Contact</a>
                       </li>
                   </ul>
               </div>

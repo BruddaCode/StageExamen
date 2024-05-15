@@ -35,21 +35,25 @@
 </div>
 
 
-<div id="about" class="relative bg-white overflow-hidden mt-16">
-    <div class="max-w-7xl mx-auto">
-        <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-            
-            <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-                <div class="sm:text-center lg:text-left">
-                    <p>Donec porttitor, enim ut dapibus lobortis, lectus sem tincidunt dui, eget ornare lectus ex nonlibero. Nam rhoncus diam ultrices porttitor laoreet. Ut mollis fermentum ex, vel viverra loremvolutpat sodales. In ornare porttitor odio sit amet laoreet. Sed laoreet, nulla a posuereultrices, purus nulla tristique turpis, hendrerit rutrum augue quam ut est. Fusce malesuadaposuere libero, vitae dapibus eros facilisis euismod. Sed sed lobortis justo, ut tinciduntvelit. Mauris in maximus eros.</p>
+<section class="bg-gray-100">
+    <div class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+            <div class="max-w-lg">
+                <p class="mt-4 text-gray-600 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis
+                    eros at lacus feugiat hendrerit sed ut tortor. Suspendisse et magna quis elit efficitur consequat.
+                    Mauris eleifend velit a pretium iaculis. Donec sagittis velit et magna euismod, vel aliquet nulla
+                    malesuada. Nunc pharetra massa lectus, a fermentum arcu volutpat vel.</p>
+                <div class="mt-8">
+                    <a href="#" class="text-blue-500 hover:text-blue-600 font-medium">Learn more about us
+                        <span class="ml-2">&#8594;</span></a>
                 </div>
-            </main>
+            </div>
+            <div class="mt-12 md:mt-0">
+                <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86" alt="About Us Image" class="object-cover rounded-lg shadow-md">
+            </div>
         </div>
     </div>
-    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img class="h-56 w-full object-cover object-top sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://cdn.pixabay.com/photo/2016/03/23/04/01/woman-1274056_960_720.jpg" alt="">
-    </div>
-</div>
+</section>
 
 
 
