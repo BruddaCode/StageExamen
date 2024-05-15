@@ -16,7 +16,7 @@
 <!-- Start Over Ons intro sectie -->
 <div class="relative">
   <div class="absolute inset-0 bg-cover" style="background-image: url('img/overonsbg.png');">
-    <div class="absolute inset-0 bg-white opacity-50"></div> <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Dark overlay -->
   </div>
   <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8 relative z-10">
     <div class=" max-w-2xl text-start  pl-3">
