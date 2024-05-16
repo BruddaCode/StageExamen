@@ -10,7 +10,7 @@
     <title>Home</title>
 </head>
 <body>
-<?php include 'nav.php'; ?>
+@include('nav')
 <script src="/src/script.js"></script>
 
 <!-- Start Scanner foto unput sectie -->
@@ -56,6 +56,6 @@
 
 <!-- Eind Scanner uitleg sectie -->
 
-<?php include 'footer.php'; ?>
+@include('footer')
 </body>
 </html>

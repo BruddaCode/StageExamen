@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<?php include 'nav.php'; ?>
+@include('nav')
 
 <!-- Start Over Ons intro sectie -->
 <div class="relative">
@@ -112,6 +112,6 @@
 
 <!-- Eind Over Ons sectie-->
 
-<?php include 'footer.php'; ?>
+@include('footer')
 </body>
 </html>
