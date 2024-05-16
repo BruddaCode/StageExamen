@@ -11,7 +11,7 @@
 </head>
 <body>
 
-@include('nav')
+    @include('nav')
 
 <!-- Start Over Ons intro sectie -->
 <div class="relative">
@@ -40,10 +40,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
             <div class="max-w-lg flex flex-col justify-between"> <!-- Added flex and justify-between -->
                 <div>
-                    <p class="mt-4 text-gray-600 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis
-                        eros at lacus feugiat hendrerit sed ut tortor. Suspendisse et magna quis elit efficitur consequat.
-                        Mauris eleifend velit a pretium iaculis. Donec sagittis velit et magna euismod, vel aliquet nulla
-                        malesuada. Nunc pharetra massa lectus, a fermentum arcu volutpat vel.</p>
+                    <p class="mt-4 text-gray-600 text-lg">Hallo, ik ben Fabio, backend developer bij Snap&Cook. Mijn passie is het creëren van robuuste systemen voor ons platform. Ik werk aan de technische infrastructuur en verbeter de gebruikerservaring. Met mijn team werk ik aan nieuwe functies voor de toekomst van koken.</p>
                 </div>
                 <div class="mt-auto pt-4"> <!-- Added mt-auto -->
                     <a class="text-green-700 font-semibold">Fabio Wolthuis | Back End Developer</a>
@@ -51,7 +48,7 @@
             </div>
             <div class="md:mt-0 flex justify-center items-center"> <!-- Modified to flex and centered -->
                 <div style="width: 300px; height: 300px; overflow: hidden; border-radius: 15px;">
-                    <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86" alt="About Us Image" class="object-cover" style="width: 100%; height: 100%;">
+                    <img src="img/overons1.jpg" alt="About Us Image" class="object-cover" style="width: 100%; height: 100%;">
                 </div>
             </div>
         </div>
@@ -63,10 +60,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
             <div class="max-w-lg flex flex-col justify-between"> <!-- Added flex and justify-between -->
                 <div>
-                    <p class="mt-4 text-gray-600 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis
-                        eros at lacus feugiat hendrerit sed ut tortor. Suspendisse et magna quis elit efficitur consequat.
-                        Mauris eleifend velit a pretium iaculis. Donec sagittis velit et magna euismod, vel aliquet nulla
-                        malesuada. Nunc pharetra massa lectus, a fermentum arcu volutpat vel.</p>
+                    <p class="mt-4 text-gray-600 text-lg">Hoy, ik ben Ravda, frontend developer bij Snap&Cook. Ik focus op het ontwerpen van een gebruiksvriendelijke interface die koken eenvoudig maakt. Mijn dagen zijn gevuld met het verkennen van nieuwe ontwerpconcepten en het vinden van creatieve oplossingen voor de gebruikerservaring. Ik ben trots om deel uit te maken van dit innovatieve team dat de kookwereld verandert.</p>
                 </div>
                 <div class="mt-auto pt-4"> <!-- Added mt-auto -->
                     <a class="text-green-700 font-semibold">Ravda Tukuc | Front End Developer</a>
@@ -74,7 +68,7 @@
             </div>
             <div class="md:mt-0 flex justify-center items-center"> <!-- Modified to flex and centered -->
                 <div style="width: 300px; height: 300px; overflow: hidden; border-radius: 15px;">
-                    <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86" alt="About Us Image" class="object-cover" style="width: 100%; height: 100%;">
+                    <img src="img/overons2.jpg" alt="About Us Image" class="object-cover" style="width: 100%; height: 100%;">
                 </div>
             </div>
         </div>
@@ -83,15 +77,12 @@
 
 
 
-<section class="">
+<section class="pb-24">
     <div class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
             <div class="max-w-lg flex flex-col justify-between"> <!-- Added flex and justify-between -->
                 <div>
-                    <p class="mt-4 text-gray-600 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis
-                        eros at lacus feugiat hendrerit sed ut tortor. Suspendisse et magna quis elit efficitur consequat.
-                        Mauris eleifend velit a pretium iaculis. Donec sagittis velit et magna euismod, vel aliquet nulla
-                        malesuada. Nunc pharetra massa lectus, a fermentum arcu volutpat vel.</p>
+                    <p class="mt-4 text-gray-600 text-lg">Hoy, ik ben Yasin, een van de frontend developers bij Snap&Cook. Mijn wereld draait om het vormgeven van het gezicht van ons platform, waarbij ik me richt op het creëren van een meeslepende en gebruiksvriendelijke ervaring. Als frontend developer werk ik aan het combineren van creativiteit en technologie om een visueel aantrekkelijke en functionele gebruikersinterface te ontwerpen.</p>
                 </div>
                 <div class="mt-auto pt-4"> <!-- Added mt-auto -->
                     <a class="text-green-700 font-semibold">Yasin Coban | Front End Developer</a>
@@ -99,7 +90,7 @@
             </div>
             <div class="md:mt-0 flex justify-center items-center"> <!-- Modified to flex and centered -->
                 <div style="width: 300px; height: 300px; overflow: hidden; border-radius: 15px;">
-                    <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86" alt="About Us Image" class="object-cover" style="width: 100%; height: 100%;">
+                    <img src="img/overons3.jpg" alt="About Us Image" class="object-cover" style="width: 100%; height: 100%;">
                 </div>
             </div>
         </div>

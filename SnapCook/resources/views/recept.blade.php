@@ -11,8 +11,8 @@
 </head>
 <body>
 
-@include('nav')
-<!--Begin resultaat gedeelte-->
+    @include('nav')
+    <!--Begin resultaat gedeelte-->
 <h1 class="text-4xl font-semibold text-center pt-16 pb-10">Resultaat</h1>
 
 <div class="flex items-center justify-center border-black pb-20">
