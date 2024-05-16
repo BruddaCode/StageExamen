@@ -3,6 +3,7 @@
 namespace SnapCook\App\AIChef;
 
 use Anthropic;
+use Dotenv\Dotenv;
 
 class AIChef
 {
@@ -48,6 +49,10 @@ class AIChef
             $imagePath = $tempImagePath;
         }
 
+        $dotenv = Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
+
+        $apiKey = $_ENV['ANTRHOPIC_API_KEY'];
         $apiKey = env('ANTRHOPIC_API_KEY');
 
         if (!$apiKey) {
