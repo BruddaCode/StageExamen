@@ -61,6 +61,7 @@ require __DIR__.'/../vendor/autoload.php';
         <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
             <div class="max-w-lg flex flex-col justify-between">
                 <div>
+                    <p class="mt-4 text-green-600 font-semibold text-lg">Welkom bij Snap&Cook</p>
                     <p class="mt-4 text-gray-600 text-lg">Snap&Cook, opgericht in 2024 door het trio Fabio, Ravda en Yasin, is een culinaire revolutie in etenmaken. Met een vurig geloof in de kracht van technologie om de manier waarop we koken te transformeren, is Snap&Cook uitgegroeid tot een baken van innovatie in het culinaire landschap. Door hun visionaire platform combineert het bedrijf naadloos de kunst van het koken met geavanceerde AI-technologie, waardoor gebruikers hun culinaire creativiteit als nooit tevoren kunnen ontketenen.</p>
                     <p class="mt-4 text-gray-600 text-lg">De kern van het ethos van Snap&Cook is een toewijding aan toegankelijkheid en inclusiviteit in de keuken. Via hun gebruiksvriendelijke website kunnen individuen van alle vaardigheidsniveaus met vertrouwen aan een culinaire reis beginnen. De intuïtieve interface van het platform stelt gebruikers in staat afbeeldingen van gerechten te uploaden, waardoor de door AI aangedreven motor gedetailleerde recepten, kookinstructies en zelfs voedingsinformatie genereert. Deze naadloze integratie van beeldherkenning en AI vereenvoudigt niet alleen het kookproces, maar opent ook een wereld van culinaire mogelijkheden voor gebruikers wereldwijd. </p>
                     <p class="mt-4 text-gray-600 text-lg">Snap&Cook: een levendige gemeenschap van voedselliefhebbers die samen delen, leren en inspireren. Met interactieve functies en live demonstraties is het platform meer dan alleen een receptenbron; het is een culinair ecosysteem dat de vreugde van koken viert en iedereen uitnodigt om de keuken te verkennen.</p>
@@ -91,7 +92,7 @@ require __DIR__.'/../vendor/autoload.php';
 
 
 <!-- Start Stats home  -->
-<div class="max-w-screen-xl mx-auto">
+<div class="max-w-screen-xl mx-auto pb-24">
   <dl class="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
   <div class="pl-6">

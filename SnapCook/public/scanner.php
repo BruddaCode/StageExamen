@@ -43,7 +43,7 @@
 
 
 <!-- Start Scanner uitleg sectie -->
-<div style="background-color: #F3F2F2;" class="relative items-center text-center">
+<div style="background-color: #F3F2F2;" class="pb-24 relative items-center text-center">
     <h2 class="text-5xl font-light pb-16 pt-6">Hoe het werkt</h2>
     <p class="pb-3">Kijk de video hieronder voor een korte uitleg</p>
     <div class="flex justify-center items-center">
