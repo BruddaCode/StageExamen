@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<?php include 'nav.php'; ?>
+@include('nav')
 <!--Begin resultaat gedeelte-->
 <h1 class="text-4xl font-semibold text-center pt-16 pb-10">Resultaat</h1>
 
@@ -82,7 +82,7 @@
 
 <!--Eind recept gedeelte-->
 
-<?php include 'footer.php'; ?>
+@include('footer')
 
 </body>
 </html>

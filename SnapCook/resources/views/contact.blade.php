@@ -11,7 +11,7 @@
 </head>
 <body style="background-color: #F3F2F2;">
 
-<?php include 'nav.php'; ?>
+@include('nav')
 
 <!-- Start contact intro sectie -->
 <div class="relative">
@@ -150,7 +150,7 @@
 
     <!--Eind Contact Form-->
 
-<?php include 'footer.php'; ?>
+@include('footer')
 
 </body>
 </html>
