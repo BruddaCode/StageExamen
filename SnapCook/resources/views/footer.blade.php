@@ -17,7 +17,7 @@
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
-              <a href="index.php" class="flex items-center">
+              <a href="{{ route('index') }}" class="flex items-center">
                   <img src="/img/logo.png" class="h-40 me-3" alt="Logo" />
               </a>
           </div>
@@ -26,16 +26,16 @@
                   <h2 class="mb-8 text-lg font-semibold text-gray-900 uppercase dark:text-white">Handige Links</h2>
                   <ul class="text-gray-900  dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="index.php" class="hover:underline">Home</a>
+                          <a href="{{ route('index') }}" class="hover:underline">Home</a>
                       </li>
                       <li class="mb-4">
-                          <a href="scanner.php" class="hover:underline">Scanner</a>
+                          <a href="{{ route('scanner') }}" class="hover:underline">Scanner</a>
                       </li>
                       <li class="mb-4">
-                          <a href="overons.php" class="hover:underline">Over Ons</a>
+                          <a href="{{ route('overons') }}" class="hover:underline">Over Ons</a>
                       </li>
                       <li class="mb-4">
-                          <a href="contact.php" class="hover:underline">Contact</a>
+                          <a href="{{ route('contact') }}" class="hover:underline">Contact</a>
                       </li>
                   </ul>
               </div>
@@ -46,7 +46,7 @@
                           <a href="privacy.php" class="hover:underline ">Privacy Beleid</a>
                       </li>
                       <li>
-                          <a href="contact.php" class="hover:underline">Contact</a>
+                          <a href="{{ route('contact') }}" class="hover:underline">Contact</a>
                       </li>
                   </ul>
               </div>
