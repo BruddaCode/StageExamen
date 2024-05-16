@@ -30,29 +30,29 @@ require __DIR__.'/../vendor/autoload.php';
     <title>Home</title>
 </head>
 <body>
-
 <?php include 'nav.php'; ?>
-<!--Begin header-->
-<header style="background-color: #F3F2F2;" >
-    <div class="flex items-center ml-20">
-        <div
-        <h1 class="text-6xl" >Plaats De Foto En </h1>
-        <h1 class="text-6xl">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Maak Het Zelf! </h1>
-    </div>
-    <img  class="ml-auto mr-20" height="553" width="730" src="img/indeximg.png">
-    </div>
+
+<header style="background-color: #F3F2F2;" class="">
+    <div class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+            <div class="max-w-2xl flex flex-col justify-between"> <!-- Added flex and justify-between -->
+                <div>
+                <h2 class="mt-4 pl-2 text-gray-900 text-4xl" style="font-size: 80px;">Plaats de foto</h2>
+                <h2 class="mt-4 pl-6 text-gray-900 text-4xl" style="font-size: 80px;">En maak het zelf!</h2>
 
 
-    <div class="flex justify-center pt-20 pb-20">
-        <a href="scanner.php">
-            <button class=" bg-gray-700 hover:bg-gray-500 text-white text-3xl py-4 px-12 rounded-full">
-                Scan nu </button>
-            <a>
+                </div>
+            </div>
+            <div class="md:mt-0 flex justify-center items-center"> <!-- Modified to flex and centered -->
+                <div style="width: 700px; height: 300px; overflow: hidden; ">
+                    <img src="img/indeximg.png" alt="About Us Image" class="object-cover" style="width: 100%; height: 100%;">
+                </div>
+            </div>
+        </div>
     </div>
 </header>
 
-<!--Eind header-->
-<?php include 'footer.php'; ?>
 
+<?php include 'footer.php'; ?>
 </body>
 </html>
