@@ -23,7 +23,10 @@
 
             $recipe = Recipe::find(Session::get('recipe_id'));
 
-            echo $recipe;
+            echo $recipe->title;
+            echo $recipe->description;
+            echo $recipe->ingredients;
+            echo $recipe->instructions;
         ?>
     </div>
 
