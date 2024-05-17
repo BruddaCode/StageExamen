@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImageController;
+
 
 Route::get('/', function () {
     return view('index');
@@ -21,3 +23,7 @@ Route::get('/recipes', function () {
 Route::get('/scanner', function () {
     return view('scanner');
 })->name('scanner');
+
+Route::post('/upload', [ImageController::class, 'upload'])->name('image.upload');
+Route::get('/status', [ImageController::class, 'status'])->name('upload.status');
+Route::get('/job-status', [ImageController::class, 'jobStatus'])->name('job.status');
