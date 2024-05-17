@@ -4,6 +4,8 @@ namespace App\AIChef;
 
 use Anthropic;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class Chef
 {
@@ -11,8 +13,16 @@ class Chef
     public function GetRecipe(string $imagePath)
     {
         try {
-            $imageData = file_get_contents($imagePath);
-            $imageExtension = pathinfo($imagePath, PATHINFO_EXTENSION);
+            $image = Storage::get($imagePath);
+
+            // Get the image extension
+            $imageExtension = Storage::mimeType($imagePath);
+
+            // Allowed image extensions
+            $allowedExtensions = ['gif', 'jpeg', 'png', 'webp'];
+
+            Log::info('Image extension: ' . $imageExtension);
+            Log::info('Image path: ' . $imagePath);
 
             $apiKey = env('ANTRHOPIC_API_KEY');
 
@@ -54,8 +64,8 @@ class Chef
                                 'type' => 'image',
                                 'source' => [
                                     'type' => 'base64',
-                                    'media_type' => 'image/' . $imageExtension,
-                                    'data' => base64_encode(file_get_contents(public_path('tmp_img/' . $imagePath)))
+                                    'media_type' => $imageExtension,
+                                    'data' => base64_encode($image)
                                 ],
                             ],
                         ]
@@ -110,16 +120,16 @@ class Chef
             }
 
             // put recipe in database
-            DB::table('recipes')->insert([
-                'image' => base64_encode($imageData),
-                'description' => json_encode($description),
-                'title' => json_encode($recipe),
-                'ingredients' => json_encode($ingredients),
-                'instructions' => json_encode($instructions)
-            ]);
+            return [
+                'image' => $imagePath,
+                'description' => $description,
+                'recipe' => $recipe,
+                'ingredients' => $ingredients,
+                'instructions' => $instructions
+            ];
         }
         catch (\Exception $e) {
-            die($e->getMessage());
+            Log::error('Error in GetRecipe: ' . $e->getMessage());
         }
     }
 }

@@ -24,6 +24,10 @@ Route::get('/scanner', function () {
     return view('scanner');
 })->name('scanner');
 
+Route::get('/wait', function () {
+    return view('wait');
+})->name('wait');
+
 Route::post('/upload', [ImageController::class, 'upload'])->name('image.upload');
 Route::get('/status', [ImageController::class, 'status'])->name('upload.status');
 Route::get('/job-status', [ImageController::class, 'jobStatus'])->name('job.status');

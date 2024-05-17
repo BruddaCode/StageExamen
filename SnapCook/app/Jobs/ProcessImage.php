@@ -11,36 +11,44 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\AIChef\Chef;
 use Illuminate\Support\Facades\Log;
+use App\Models\Recipe;
 
 class ProcessImage implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $path;
+    protected $recipe;
 
-    public function __construct($path)
+    public function __construct(Recipe $recipe)
     {
-        $this->path = $path;
+        $this->recipe = $recipe;
     }
 
     public function handle()
     {
-        Log::info('ProcessImage job started with path: ' . $this->path);
+        $recipe = $this->recipe;
+        Log::info('ProcessImage job started with path: ' . $recipe->path);
 
         try {
+
             $chef = new Chef();
             Log::info('Chef instance created.');
 
-            $chef->GetRecipe($this->path);
+            $details = $chef->GetRecipe($recipe->path);
             Log::info('GetRecipe called.');
 
-            Storage::delete($this->path);
+            $recipe->title = $details['recipe'];
+            $recipe->image = $details['image'];
+            $recipe->ingredients = $details['ingredients'];
+            $recipe->instructions = $details['instructions'];
+            $recipe->description = $details['description'];
+            $recipe->save();
 
-            DB::table('jobs')->where('id', $this->path)->update(['status' => 'completed']);
+            Storage::delete($recipe->path);
+
             Log::info('Job status updated to completed.');
         } catch (\Exception $e) {
             Log::error('Error in ProcessImage job: ' . $e->getMessage());
-            DB::table('jobs')->where('id', $this->path)->update(['status' => 'failed']);
             $this->fail($e); // Mark job as failed
         }
     }

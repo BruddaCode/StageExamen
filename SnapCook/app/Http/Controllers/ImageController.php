@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Jobs\ProcessImage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Recipe;
 
 class ImageController extends Controller
 {
@@ -15,27 +17,20 @@ class ImageController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10000',
         ]);
 
-        // Get the image extension
-        $imageExtension = pathinfo($request, PATHINFO_EXTENSION);
+        $image = time() . '.' . $request->image->extension();
 
-        // convert image to PNG if it's not in the allowed extensions
-        // Allowed image extensions
-        $allowedExtensions = ['gif', 'jpeg', 'png', 'webp'];
+        Storage::put($image, file_get_contents($request->file('image')));
 
-        if (!in_array($imageExtension, $allowedExtensions)) {
-            $image = $request->file('image')->storeAs('tmp_img', $request->file('image')->getClientOriginalName() . '.png');
-        } else {
-            $image = $request->file('image')->store('tmp_img');
-        }
+        $recipe = new Recipe();
+        $recipe->path = $image;
+        $recipe->save();
 
-        $image = $request->file('image')->store('tmp_img');
-
-        ProcessImage::dispatch($image)->onQueue('default');
+        ProcessImage::dispatch($recipe)->onQueue('default');
 
         // Store job ID in session for polling
-        Session::put('job_id', $image);
+        Session::put('recipe_id', $recipe->id);
 
-        return redirect()->route('upload.status');
+        return redirect()->route('wait');
     }
 
     public function status()
