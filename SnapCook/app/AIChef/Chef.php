@@ -121,7 +121,6 @@ class Chef
 
             // put recipe in database
             return [
-                'image' => $imagePath,
                 'description' => $description,
                 'recipe' => $recipe,
                 'ingredients' => $ingredients,

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::table('recipes', function (Blueprint $table) {
             $table->string('path')->value('');
             $table->string('details')->nullable();
-            $table->string('image')->nullable();
         });
     }
 
@@ -26,7 +25,6 @@ return new class extends Migration
         Schema::table('recipes', function (Blueprint $table) {
             $table->dropColumn('path');
             $table->dropColumn('details');
-            $table->dropColumn('image');
         });
     }
 };

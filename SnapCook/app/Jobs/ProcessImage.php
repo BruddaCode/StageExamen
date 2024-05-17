@@ -38,7 +38,6 @@ class ProcessImage implements ShouldQueue
             Log::info('GetRecipe called.');
 
             $recipe->title = $details['recipe'];
-            $recipe->image = $details['image'];
             $recipe->ingredients = $details['ingredients'];
             $recipe->instructions = $details['instructions'];
             $recipe->description = $details['description'];
