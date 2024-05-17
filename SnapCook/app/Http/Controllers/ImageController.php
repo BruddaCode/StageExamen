@@ -15,14 +15,25 @@ class ImageController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10000',
         ]);
 
-        $image = $request->file('image');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('tmp_img'), $imageName);
+        // Get the image extension
+        $imageExtension = pathinfo($request, PATHINFO_EXTENSION);
 
-        ProcessImage::dispatch($imageName)->onQueue('default');
+        // convert image to PNG if it's not in the allowed extensions
+        // Allowed image extensions
+        $allowedExtensions = ['gif', 'jpeg', 'png', 'webp'];
+
+        if (!in_array($imageExtension, $allowedExtensions)) {
+            $image = $request->file('image')->storeAs('tmp_img', $request->file('image')->getClientOriginalName() . '.png');
+        } else {
+            $image = $request->file('image')->store('tmp_img');
+        }
+
+        $image = $request->file('image')->store('tmp_img');
+
+        ProcessImage::dispatch($image)->onQueue('default');
 
         // Store job ID in session for polling
-        Session::put('job_id', $imageName);
+        Session::put('job_id', $image);
 
         return redirect()->route('upload.status');
     }

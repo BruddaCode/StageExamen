@@ -11,36 +11,8 @@ class Chef
     public function GetRecipe(string $imagePath)
     {
         try {
-            $imagePath = str_replace("\0", '', $imagePath);
-
-            // Get the image extension
+            $imageData = file_get_contents($imagePath);
             $imageExtension = pathinfo($imagePath, PATHINFO_EXTENSION);
-
-            // convert image to PNG if it's not in the allowed extensions
-            // Allowed image extensions
-            $allowedExtensions = ['gif', 'jpeg', 'png', 'webp'];
-
-            if (is_readable($imagePath)) {
-                $imageData = file_get_contents($imagePath);
-            } else {
-                die("The file " . $imagePath . " does not exist or isn't readable.");
-            }
-
-            // Check the image extension and convert if necessary
-            if (!in_array($imageExtension, $allowedExtensions)) {
-                $newImagePath = public_path('tmp_img/' . pathinfo($imagePath, PATHINFO_FILENAME) . '.png');
-                $imagePath = $newImagePath;
-                $imageExtension = 'png';
-
-                $image = imagecreatefromstring($imageData);
-
-                if ($image !== false) {
-                    imagepng($image, $newImagePath);
-                    imagedestroy($image);
-                } else {
-                    die("The image could not be created from the provided data.");
-                }
-            }
 
             $apiKey = env('ANTRHOPIC_API_KEY');
 
@@ -135,12 +107,6 @@ class Chef
                         $instructions[] = $line;
                         break;
                 }
-            }
-
-            // Clean up temporary files
-            unlink(public_path('tmp_img/' . $imagePath));
-            if (isset($newImagePath) && file_exists($newImagePath)) {
-                unlink($newImagePath);
             }
 
             // put recipe in database

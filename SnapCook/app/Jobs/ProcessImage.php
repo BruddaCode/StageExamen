@@ -31,8 +31,10 @@ class ProcessImage implements ShouldQueue
             $chef = new Chef();
             Log::info('Chef instance created.');
 
-            $chef->GetRecipe(public_path('tmp_img/' . $this->path));
+            $chef->GetRecipe($this->path);
             Log::info('GetRecipe called.');
+
+            Storage::delete($this->path);
 
             DB::table('jobs')->where('id', $this->path)->update(['status' => 'completed']);
             Log::info('Job status updated to completed.');
