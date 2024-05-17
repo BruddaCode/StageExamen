@@ -14,6 +14,30 @@
 
 <div style="background-color: #F3F2F2;" class="pt-8">
 <footer   class=" dark:bg-gray-900">
+
+    <!--Begin Scroll naar boven knop-->
+    <button id="scrollTopBtn" class="hidden fixed bottom-5 right-5 bg-black text-white p-3 rounded-full shadow-lg hover:bg-gray-700 focus:outline-none">
+        ↑
+    </button>
+    <script>
+        // Get the button
+        let mybutton = document.getElementById("scrollTopBtn");
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.classList.remove("hidden");
+            } else {
+                mybutton.classList.add("hidden");
+            }
+        }
+        // When the user clicks on the button, scroll to the top of the document
+        mybutton.addEventListener('click', function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        });
+    </script>
+    <!--Eind Scroll naar boven knop-->
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">

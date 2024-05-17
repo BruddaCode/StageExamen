@@ -12,7 +12,7 @@
 <body>
 <script src="/src/script.js"></script>
 
-<nav style="background-color: #F3F2F2;" class= border-gray-200 dark:bg-gray-900">
+<nav style="background-color: #F3F2F2;" class= "border-gray-200 dark:bg-gray-900">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="{{ route('index') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="/img/logo.png" class="h-40" alt="Logo" />
