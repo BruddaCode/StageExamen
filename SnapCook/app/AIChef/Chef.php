@@ -1,58 +1,45 @@
 <?php
 
-namespace SnapCook\App\AIChef;
+namespace App\AIChef;
 
 use Anthropic;
-use Dotenv\Dotenv;
 
-class AIChef
+class Chef
 {
-    private $imagePath;
-    public $description;
-    public $recipe;
-    public $ingredients;
-    public $instructions;
 
     public function GetRecipe(string $imagePath)
     {
-        $this->imagePath = $imagePath;
+        $imagePath = str_replace("\0", '', $imagePath);
+
+        // Get the image extension
         $imageExtension = pathinfo($imagePath, PATHINFO_EXTENSION);
 
-        // convert image to PNG if it's not already
+        // convert image to PNG if it's not in the allowed extensions
         // Allowed image extensions
         $allowedExtensions = ['gif', 'jpeg', 'png', 'webp'];
 
-        // Temporary file path for downloading the image
-        $tempImagePath = 'app/AIChef/temp_image.' . $imageExtension;
-
-        // Download the image from the URL
-        $imageData = file_get_contents($imagePath);
-        if ($imageData === false) {
-            die('Failed to download image.');
+        if (is_readable(public_path('tmp_img/' . $imagePath))) {
+            $imageData = file_get_contents(public_path('tmp_img/' . $imagePath));
+        } else {
+            die("The file " . public_path('tmp_img/' . $imagePath) . " does not exist or isn't readable.");
         }
-
-        // Save the image to a temporary local file
-        file_put_contents($tempImagePath, $imageData);
 
         // Check the image extension and convert if necessary
-        if (!in_array(strtolower($imageExtension), $allowedExtensions)) {
-            $image = imagecreatefromstring(file_get_contents($tempImagePath));
-            if ($image === false) {
-                die('Failed to create image from string.');
-            }
-            $newImagePath = 'app/AIChef/converted_image.png';
-            imagepng($image, $newImagePath);
-            imagedestroy($image);
+        if (!in_array($imageExtension, $allowedExtensions)) {
+            $newImagePath = public_path('tmp_img/' . pathinfo($imagePath, PATHINFO_FILENAME) . '.png');
             $imagePath = $newImagePath;
             $imageExtension = 'png';
-        } else {
-            $imagePath = $tempImagePath;
+
+            $image = imagecreatefromstring($imageData);
+
+            if ($image !== false) {
+                imagepng($image, $newImagePath);
+                imagedestroy($image);
+            } else {
+                die("The image could not be created from the provided data.");
+            }
         }
 
-        $dotenv = Dotenv::createImmutable(__DIR__);
-        $dotenv->load();
-
-        $apiKey = $_ENV['ANTRHOPIC_API_KEY'];
         $apiKey = env('ANTRHOPIC_API_KEY');
 
         if (!$apiKey) {
@@ -94,7 +81,7 @@ class AIChef
                             'source' => [
                                 'type' => 'base64',
                                 'media_type' => 'image/' . $imageExtension,
-                                'data' => base64_encode(file_get_contents($imagePath))
+                                'data' => base64_encode(file_get_contents(public_path('tmp_img/' . $imagePath)))
                             ],
                         ],
                     ]
@@ -149,15 +136,18 @@ class AIChef
         }
 
         // Clean up temporary files
-        unlink($tempImagePath);
+        unlink(public_path('tmp_img/' . $imagePath));
         if (isset($newImagePath) && file_exists($newImagePath)) {
             unlink($newImagePath);
         }
 
         // Return the recipe
-        $this->description = $description;
-        $this->recipe = $recipe;
-        $this->ingredients = $ingredients;
-        $this->instructions = $instructions;
+        return response()->json([
+            'image' => base64_encode($imageData),
+            'description' => $description,
+            'recipe' => $recipe,
+            'ingredients' => $ingredients,
+            'instructions' => $instructions
+        ]);
     }
 }
