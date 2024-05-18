@@ -13,45 +13,47 @@
 <body>
 
 @include('nav')
+<?php
+    use App\Models\Recipe;
+    use Illuminate\Support\Facades\Session;
+
+    $recipe = Recipe::find(Session::get('recipe_id'));
+
+    $title = implode(json_decode($recipe->title, true));
+    $description = json_decode($recipe->description, true);
+    $ingredients = json_decode($recipe->ingredients, true);
+    $instructions = json_decode($recipe->instructions, true);
+?>
 
 <!--Begin resultaat gedeelte-->
 <h1 class="text-4xl font-semibold text-center pt-16 pb-10">Resultaat</h1>
 
 <div style="background-color: #F3F2F2;" class="flex items-center justify-center min-h-screen py-10">
     <div class="w-4/5 max-w-4xl bg-white border border-gray-200 shadow-lg rounded-lg p-8">
-        <?php
-        use App\Models\Recipe;
-        use Illuminate\Support\Facades\Session;
+        <div class="mb-8 text-3xl font-bold text-black">{{ $title }}</div>
+        <h2 class="text-xl font-semibold mb-4 text-black">Description:</h2>
+        @foreach (array_slice($description, 1) as $desc)
+            <div class="mb-6 text-lg text-gray-800">{{ $desc }}</div>
+        @endforeach
 
-        $recipe = Recipe::find(Session::get('recipe_id'));
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold mb-4 text-black">Ingredients:</h2>
+            @foreach (array_slice($ingredients, 1) as $ingredient)
+                <div class="flex items-center border border-gray-300 p-4 mb-2 rounded-md shadow-sm bg-gray-50 w-full">
+                    <input type="checkbox" class="mr-2">
+                    <span class="text-gray-800">{{ $ingredient }}</span>
+                </div>
+            @endforeach
+        </div>
 
-        // Ensure $recipe is not null before accessing its properties
-        if ($recipe) {
-            echo '<div class="mb-8 text-3xl font-bold text-black">' . htmlspecialchars($recipe->title) . '</div>';
-            echo '<h2 class="text-xl font-semibold mb-4 text-black">Description:</h2>';
-            echo '<div class="mb-6 text-lg text-gray-800">' . nl2br(htmlspecialchars($recipe->description)) . '</div>';
-
-            echo '<div class="mb-6">';
-            echo '<h2 class="text-xl font-semibold mb-4 text-black">Ingredients:</h2>';
-            $ingredients = explode("\n", $recipe->ingredients); // Assuming ingredients are separated by new lines
-            foreach ($ingredients as $ingredient) {
-                echo '<div class="flex items-center border border-gray-300 p-4 mb-2 rounded-md shadow-sm bg-gray-50 w-full">';
-                echo '<input type="checkbox" class="mr-2">';
-                echo '<span class="text-gray-800">' . htmlspecialchars($ingredient) . '</span>';
-                echo '</div>';
-            }
-            echo '</div>';
-
-            echo '<div class="mb-6">';
-            echo '<h2 class="text-xl font-semibold mb-2 text-black">Instructions:</h2>';
-            echo '<div class="prose prose-lg text-gray-800">' . nl2br(htmlspecialchars($recipe->instructions)) . '</div>';
-            echo '</div>';
-
-            echo '<div class="text-xl font-semibold text-center text-black mt-10">Eetsmakelijk!</div>';
-        } else {
-            echo '<div class="text-red-500">Recipe not found.</div>';
-        }
-        ?>
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold mb-2 text-black">Instructions:</h2>
+            <div class="prose prose-lg text-gray-800">
+                @foreach (array_slice($instructions, 1) as $instruction)
+                    <p>{{ $instruction }}</p> <br>
+                @endforeach
+            </div>
+        </div>
     </div>
 </div>
 
