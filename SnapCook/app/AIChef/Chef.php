@@ -48,9 +48,9 @@ class Chef
                                                     - description 1
                                                     - description 2
                                                     - description 3
-
+ 
                                                 here is a basic recipe to make [dish name]:
-
+ 
                                                 Ingredients:
                                                     - ingredient 1
                                                     - ingredient 2
@@ -58,7 +58,9 @@ class Chef
                                                 Instructions:
                                                     1. instruction 1
                                                     2. instruction 2
-                                                    3. instruction 3'
+                                                    3. instruction 3
+ 
+                                                In case the image is not that of a dish, begin with "This is not a dish, this is a ..." and provide a description of the image, then playfully insult the user'
                             ],
                             [
                                 'type' => 'image',
@@ -82,6 +84,7 @@ class Chef
             $recipe = [];
             $ingredients = [];
             $instructions = [];
+            $error = [];
 
             $section = 'description';
 
@@ -100,7 +103,10 @@ class Chef
                     $section = 'instructions';
                 } elseif (str_contains($line, "basic recipe")) {
                     $section = 'recipe';
+                } elseif (str_contains($line, "This is not a dish")) {
+                    $section = 'error';
                 }
+                
 
                 switch ($section) {
                     case 'description':
@@ -116,6 +122,9 @@ class Chef
                     case 'instructions':
                         $instructions[] = $line;
                         break;
+                    case 'error':
+                        $error[] = $line;
+                        break;
                 }
             }
 
@@ -124,7 +133,8 @@ class Chef
                 'description' => $description,
                 'recipe' => $recipe,
                 'ingredients' => $ingredients,
-                'instructions' => $instructions
+                'instructions' => $instructions,
+                'error' => $error
             ];
         }
         catch (\Exception $e) {

@@ -41,6 +41,7 @@ class ProcessImage implements ShouldQueue
             $recipe->ingredients = $details['ingredients'];
             $recipe->instructions = $details['instructions'];
             $recipe->description = $details['description'];
+            $recipe->error = $details['error'];
             $recipe->save();
 
             Storage::delete($recipe->path);
