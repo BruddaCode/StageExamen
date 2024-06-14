@@ -28,6 +28,7 @@ Route::get('/wait', function () {
     return view('wait');
 })->name('wait');
 
+Route::get('/download/{id}', [ImageController::class, 'download'])->name('download');
 Route::post('/upload', [ImageController::class, 'upload'])->name('image.upload');
 Route::get('/status', [ImageController::class, 'status'])->name('upload.status');
 Route::get('/job-status', [ImageController::class, 'jobStatus'])->name('job.status');
