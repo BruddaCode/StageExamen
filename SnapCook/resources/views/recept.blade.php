@@ -31,10 +31,29 @@
         $error_msg = true;
     }
  
+    // get previous recipes that dont have an error
+    $previous_recipes = Recipe::where('error', '[]')->get()->reverse()->take(3);
 ?>
  
 <!--Begin resultaat gedeelte-->
 <h1 class="text-4xl font-semibold text-center pt-16 pb-10">Resultaat</h1>
+ 
+{{-- show each recipe in its own block side by side with only the title --}}
+ 
+<h1 class="text-1xl font-semibold text-center pt-16 pb-10">Previous Recipes</h1>
+<div class="flex items-center justify-center">
+    @foreach ($previous_recipes as $prev_recipe)
+        <div class="flex items-center justify-center w-1/3">
+            <div class="flex flex-col items-center justify-center w-full p-5">
+                <div class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
+                    <a href="{{ route('recept', ['id' => $prev_recipe->id]) }}" class="text-1xl font-light mb-4">{{ implode(json_decode($prev_recipe->title, true)) }}</a>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
+ 
+ 
  
 @if ($error_msg)
     <div class="flex items-center justify-center border-black pb-20">

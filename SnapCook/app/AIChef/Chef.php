@@ -134,7 +134,8 @@ class Chef
                 'recipe' => $recipe,
                 'ingredients' => $ingredients,
                 'instructions' => $instructions,
-                'error' => $error
+                'error' => $error,
+                'file' => $response
             ];
         }
         catch (\Exception $e) {
