@@ -46,7 +46,7 @@
         <div class="flex items-center justify-center w-1/3">
             <div class="flex flex-col items-center justify-center w-full p-5">
                 <div class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
-                    <a href="{{ route('recept', ['id' => $prev_recipe->id]) }}" class="text-1xl font-light mb-4">{{ implode(json_decode($prev_recipe->title, true)) }}</a>
+                    <a href="{{ route('download', ['id' => $prev_recipe->id]) }}" class="text-1xl font-light mb-4">{{ implode(json_decode($prev_recipe->title, true)) }}</a>
                 </div>
             </div>
         </div>

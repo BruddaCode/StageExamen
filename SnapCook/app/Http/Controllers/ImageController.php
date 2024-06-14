@@ -38,6 +38,30 @@ class ImageController extends Controller
         return view('recept');
     }
 
+
+
+    public function download($recipeId){
+        // get recipe by id
+        $recipe = Recipe::find($recipeId);
+ 
+        // check if recipe exists
+        if (!$recipe) {
+            return redirect()->route('recept');
+        }
+ 
+        // get contents of file column
+        $file = $recipe->file;
+ 
+        // put the file contents in a new txt file
+        Storage::put('recipe.txt', $file);
+ 
+        // download the file to the user
+        return Storage::download('recipe.txt');
+ 
+    }
+
+
+
     public function jobStatus()
     {
         $jobId = Session::get('job_id');
