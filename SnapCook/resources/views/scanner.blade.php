@@ -38,6 +38,9 @@
             <form action="{{ route('image.upload') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input id="dropzone-file" type="file" name="image" class="hidden" required/>
+                @error('image')
+                <p class="text-red-500 text-xs bold text-2xl">{{ $message }}</p>
+                @enderror
                 <button type="submit" class="bg-blue-400 dark:bg-gray-700 hover:bg-blue-500 dark:hover:bg-gray-600 text-white dark:text-gray-400 font-semibold py-2 px-4 rounded-lg">Upload</button>
             </form>
         </div>

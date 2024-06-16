@@ -28,6 +28,8 @@ Route::get('/wait', function () {
     return view('wait');
 })->name('wait');
 
+Route::post('/like/{id}', [ImageController::class, 'like'])->name('like');
+Route::post('/dislike/{id}', [ImageController::class, 'dislike'])->name('dislike');
 Route::get('/download/{id}', [ImageController::class, 'download'])->name('download');
 Route::post('/upload', [ImageController::class, 'upload'])->name('image.upload');
 Route::get('/status', [ImageController::class, 'status'])->name('upload.status');

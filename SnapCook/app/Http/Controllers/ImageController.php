@@ -43,21 +43,21 @@ class ImageController extends Controller
     public function download($recipeId){
         // get recipe by id
         $recipe = Recipe::find($recipeId);
- 
+
         // check if recipe exists
         if (!$recipe) {
             return redirect()->route('recept');
         }
- 
+
         // get contents of file column
         $file = $recipe->file;
- 
+
         // put the file contents in a new txt file
         Storage::put('recipe.txt', $file);
- 
+
         // download the file to the user
         return Storage::download('recipe.txt');
- 
+
     }
 
 
@@ -69,4 +69,39 @@ class ImageController extends Controller
 
         return response()->json(['status' => $status]);
     }
+
+
+    public function like($recipeId){
+        // get recipe by id
+        $recipe = Recipe::find($recipeId);
+
+        // check if recipe exists
+        if (!$recipe) {
+            return redirect()->route('recept');
+        }
+
+        // increment the likes column by 1
+        $recipe->likes += 1;
+        $recipe->save();
+
+        return redirect()->route('recept');
+    }
+
+
+    public function dislike($recipeId){
+        // get recipe by id
+        $recipe = Recipe::find($recipeId);
+
+        // check if recipe exists
+        if (!$recipe) {
+            return redirect()->route('recept');
+        }
+
+        // increment the dislikes column by 1
+        $recipe->dislikes += 1;
+        $recipe->save();
+
+        return redirect()->route('recept');
+    }
 }
+
