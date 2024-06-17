@@ -13,12 +13,15 @@
 <body>
 
 @include('nav')
+
 <?php
     use App\Models\Recipe;
     use Illuminate\Support\Facades\Session;
 
+    // Retrieve the recipe using the session's recipe_id
     $recipe = Recipe::find(Session::get('recipe_id'));
 
+    // Decode JSON fields from the recipe
     $title = implode(json_decode($recipe->title, true));
     $description = json_decode($recipe->description, true);
     $ingredients = json_decode($recipe->ingredients, true);
@@ -27,18 +30,17 @@
     $likes = $recipe->likes;
     $dislikes = $recipe->dislikes;
 
+    // Check if there is an error message
     $error_msg = false;
-
     if ($error != "") {
         $error_msg = true;
     }
 
-    // get previous recipes that dont have an error
+    // Get previous recipes that don't have an error and limit to the last 3
     $previous_recipes = Recipe::where('error', '[]')->get()->reverse()->take(3);
-
 ?>
 
-<!--Begin resultaat gedeelte-->
+<!-- Begin resultaat gedeelte -->
 <h1 class="text-4xl font-semibold text-center pt-16 pb-10">Resultaat</h1>
 
 {{-- show each recipe in its own block side by side with only the title --}}
@@ -57,13 +59,12 @@
     @endforeach
 </div>
 
-
-
+<!-- Display error message if there is one -->
 @if ($error_msg)
     <div class="flex items-center justify-center border-black pb-20">
         <div class="flex items-center justify-center w-9/12 border-top border-2 border-black pb-20 pt-20">
             <div class="flex items-center justify-center w-3/12">
-                <div class="flex flex-col  items-center justify-center w-full p-5">
+                <div class="flex flex-col items-center justify-center w-full p-5">
                     <div class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
                         <p class="text-2xl font-semibold mb-4">{{ $error }}</p>
                         @foreach (array_slice($description, 1) as $desc)
@@ -76,6 +77,7 @@
     </div>
 @endif
 
+<!-- Display recipe details if there is no error message -->
 @if (!$error_msg)
     <div style="background-color: #F3F2F2;" class="flex items-center justify-center min-h-screen py-10">
         <div class="w-4/5 max-w-4xl bg-white border border-gray-200 shadow-lg rounded-lg p-8">
@@ -104,6 +106,7 @@
                 </div>
             </div>
 
+            <!-- Like and Dislike buttons -->
             <div class="flex items-center justify-between">
                 <form action="{{ route('like', ['id' => $recipe->id]) }}" method="POST">
                     @csrf
@@ -118,10 +121,9 @@
     </div>
 @endif
 
+<!-- Eind resultaat gedeelte -->
 
-<!--Eind resultaat gedeelte-->
-
-
+<!-- Include the footer -->
 @include('footer')
 
 </body>
