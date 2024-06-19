@@ -64,12 +64,12 @@
 @if ($error_msg)
     <div class="flex items-center justify-center border-black pb-20">
         <div class="flex items-center justify-center w-9/12 border-top border-2 border-black pb-20 pt-20">
-            <div class="flex items-center justify-center w-3/12">
+            <div class="flex items-center justify-center w-9/12">
                 <div class="flex flex-col items-center justify-center w-full p-5">
                     <div class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
-                        <p class="text-2xl font-semibold mb-4">{{ $error }}</p>
+                        <p class="text-2xl items-center font-semibold mb-4">{{ $error }}</p>
                         @foreach (array_slice($description, 1) as $desc)
-                            <div class="mb-6 text-lg text-gray-800">{{ $desc }}</div>
+                            <div class="mb-6 text-center text-lg text-gray-800">{{ $desc }}</div>
                         @endforeach
                     </div>
                 </div>
